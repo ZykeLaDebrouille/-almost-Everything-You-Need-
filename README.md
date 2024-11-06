@@ -4,7 +4,7 @@ Bienvenue dans le repository qui a (presque) tout ce qu'il vous faut ! 😄
 
 ## Citation du jour 🌟
 
-> "Initialisez votre première citation ici." — Auteur Inconnu
+"La tranquillité d'esprit est le plus grand des biens." — Marc Aurèle
 
 
 ## Qu'est-ce que c'est ? 🤔

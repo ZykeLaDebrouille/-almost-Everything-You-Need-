@@ -1,15 +1,40 @@
 const fs = require('fs');
-const fetch = require('node-fetch');
+
+async function getRandomQuote() {
+  try {
+    const data = fs.readFileSync('quotes.json', 'utf8');
+    const quotes = JSON.parse(data);
+    
+    const randomIndex = Math.floor(Math.random() * quotes.length);
+    return quotes[randomIndex];
+  } catch (error) {
+    console.error('Erreur lors de la lecture du fichier :', error.message);
+  }
+}
 
 async function updateReadme() {
-  const response = await fetch('https://api.quotable.io/random');
-  const data = await response.json();
-  const quote = `"${data.content}" — ${data.author}`;
+  try {
+    const quoteData = await getRandomQuote();
+    
+    // Vérifiez que les données de citation sont valides
+    if (quoteData && quoteData.quote && quoteData.author) {
+      const quote = `"${quoteData.quote}" — ${quoteData.author}`;
+      console.log(quote);
 
-  let readmeContent = fs.readFileSync('README.md', 'utf8');
-  const updatedContent = readmeContent.replace(/> ".*" — .*$/m, `> ${quote}`);
+      // Lire le contenu actuel du README.md
+      let readmeContent = fs.readFileSync('README.md', 'utf8');
 
-  fs.writeFileSync('README.md', updatedContent);
+      // Remplacer ou ajouter la citation du jour
+      const newContent = readmeContent.replace(/(Citation du jour 🌟\n\n)(.*)/, `$1${quote}`);
+      
+      // Écrire le nouveau contenu dans le README.md
+      fs.writeFileSync('README.md', newContent);
+    } else {
+      console.warn('Citation ou auteur non définis, aucune mise à jour effectuée.');
+    }
+  } catch (error) {
+    console.error('Erreur :', error.message);
+  }
 }
 
 updateReadme();
