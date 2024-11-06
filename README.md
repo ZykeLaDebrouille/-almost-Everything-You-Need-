@@ -2,6 +2,11 @@
 
 Bienvenue dans le repository qui a (presque) tout ce qu'il vous faut ! 😄
 
+## Citation du jour 🌟
+
+> "Initialisez votre première citation ici." — Auteur Inconnu
+
+
 ## Qu'est-ce que c'est ? 🤔
 
 Ce projet est une collection de scripts, d'outils, et de ressources qui vous aideront à conquérir le monde (ou au moins à rendre votre journée un peu plus facile). Que vous soyez développeur, designer, ou simplement curieux, vous trouverez ici quelque chose d'utile et de divertissant. 🚀
